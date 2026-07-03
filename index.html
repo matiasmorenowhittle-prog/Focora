@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focora - Organizador con recompensas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-copy">
+        <p class="eyebrow">Foco + recompensa</p>
+        <h1>Focora</h1>
+        <p class="topbar__text">
+          Convierte tus pendientes en un plan claro, medible y motivador.
+        </p>
+        <div class="brand-pills" aria-label="Diferenciadores de Focora">
+          <span>Plan diario</span>
+          <span>XP y logros</span>
+          <span>Modo enfoque</span>
+        </div>
+      </div>
+      <figure class="hero-visual">
+        <img src="assets/focora-hero.png" alt="Escritorio organizado con planificador, temporizador y recompensas" />
+      </figure>
+    </header>
+
+    <main class="app-shell">
+      <nav class="app-nav" aria-label="Secciones de Focora">
+        <button class="nav-tab is-active" type="button" data-view-tab="progreso">Progreso</button>
+        <button class="nav-tab" type="button" data-view-tab="plan">Plan</button>
+        <button class="nav-tab" type="button" data-view-tab="tareas">Tareas</button>
+        <button class="nav-tab" type="button" data-view-tab="ia">IA</button>
+        <button class="nav-tab" type="button" data-view-tab="cuenta">Cuenta</button>
+      </nav>
+
+      <section class="view-section is-active" data-view="progreso">
+        <section class="dashboard" aria-label="Resumen de productividad">
+          <article class="metric">
+            <span data-total>0</span>
+            <p>Total</p>
+          </article>
+          <article class="metric">
+            <span data-pending>0</span>
+            <p>Pendientes</p>
+          </article>
+          <article class="metric">
+            <span data-time-left>0 min</span>
+            <p>Tiempo pendiente</p>
+          </article>
+          <article class="metric metric--progress">
+            <span data-progress-label>0%</span>
+            <p>Progreso</p>
+            <div class="progress-track" aria-hidden="true">
+              <div class="progress-fill" data-progress-bar></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="value-strip" aria-label="Por que elegir Focora">
+          <article>
+            <strong>Menos decision</strong>
+            <span>Te dice cual es la siguiente mejor accion.</span>
+          </article>
+          <article>
+            <strong>Mas motivacion</strong>
+            <span>Recompensa avances con XP, niveles, rachas y logros.</span>
+          </article>
+          <article>
+            <strong>Progreso portable</strong>
+            <span>Puede guardar tareas y recompensas con login.</span>
+          </article>
+        </section>
+
+        <section class="reward-panel" aria-label="Sistema de recompensas">
+          <article class="level-card">
+            <div>
+              <p class="eyebrow">Recompensa</p>
+              <h2 data-level-label>Nivel 1</h2>
+            </div>
+            <p data-xp-label>0 XP</p>
+            <div class="xp-track" aria-hidden="true">
+              <div class="xp-fill" data-xp-bar></div>
+            </div>
+            <span data-next-level>100 XP para el siguiente nivel</span>
+          </article>
+
+          <article class="streak-card">
+            <span data-streak-count>0</span>
+            <div>
+              <h2>Racha</h2>
+              <p data-streak-text>Completa una tarea hoy para iniciar tu cadena.</p>
+            </div>
+          </article>
+
+          <article class="achievement-card">
+            <div>
+              <p class="eyebrow">Logros</p>
+              <h2 data-achievement-count>0/6</h2>
+            </div>
+            <p data-next-achievement>Completa tu primera tarea para desbloquear un logro.</p>
+          </article>
+        </section>
+      </section>
+
+      <section class="view-section" data-view="cuenta">
+        <section class="panel auth-panel" aria-labelledby="auth-title">
+        <div class="auth-header">
+          <div class="section-title">
+            <p class="eyebrow">Cuenta</p>
+            <h2 id="auth-title">Cuenta y sincronizacion</h2>
+          </div>
+          <span class="auth-status" data-auth-status>Modo local</span>
+        </div>
+
+        <div class="auth-grid">
+          <form class="auth-form" data-auth-form novalidate>
+            <div class="auth-tabs" role="group" aria-label="Modo de cuenta">
+              <button class="auth-tab is-active" type="button" data-auth-mode="login">
+                Ingresar
+              </button>
+              <button class="auth-tab" type="button" data-auth-mode="register">
+                Crear cuenta
+              </button>
+            </div>
+
+            <label>
+              Correo
+              <input
+                type="email"
+                name="email"
+                placeholder="tu-correo@email.com"
+                autocomplete="email"
+                data-auth-email
+              />
+            </label>
+            <label>
+              Contrasena
+              <span class="password-field">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Minimo 6 caracteres"
+                  autocomplete="current-password"
+                  data-auth-password
+                />
+                <button class="password-toggle" type="button" data-password-toggle>
+                  Mostrar
+                </button>
+              </span>
+            </label>
+            <p class="auth-help" data-auth-help>
+              Ingresa con tu correo para recuperar tareas, XP, racha y logros.
+            </p>
+            <div class="auth-actions">
+              <button class="primary-button" type="submit" data-auth-submit>
+                Ingresar
+              </button>
+              <button class="task-action" type="button" data-logout-button>
+                Cerrar sesion
+              </button>
+            </div>
+          </form>
+
+          <div class="cloud-box">
+            <div class="cloud-box__header">
+              <h3>Estado de guardado</h3>
+              <span data-cloud-dot></span>
+            </div>
+            <p data-cloud-message>
+              Tu progreso se guarda en este navegador. Configura Supabase para usar login y base de datos.
+            </p>
+            <button class="secondary-button" type="button" data-sync-button>
+              Sincronizar ahora
+            </button>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <section class="view-section" data-view="plan">
+        <section class="main-column">
+          <div class="panel focus-panel" aria-labelledby="focus-title">
+            <div class="section-title">
+              <p class="eyebrow">Modo enfoque</p>
+              <h2 id="focus-title">Siguiente mejor accion</h2>
+            </div>
+
+            <div class="focus-card" data-focus-card>
+              <p class="focus-card__title" data-focus-title>
+                Agrega tareas para activar el modo enfoque.
+              </p>
+              <p class="focus-card__meta" data-focus-meta>
+                Focora elegira la tarea con mejor combinacion de urgencia, impacto y esfuerzo.
+              </p>
+              <p class="focus-card__reason" data-focus-reason></p>
+            </div>
+          </div>
+
+          <div class="panel plan-panel" aria-labelledby="plan-title">
+            <div class="plan-header">
+              <div class="section-title">
+                <p class="eyebrow">Plan del dia</p>
+                <h2 id="plan-title">Bloques sugeridos</h2>
+              </div>
+              <button class="secondary-button" type="button" data-plan-button>
+                Generar plan
+              </button>
+            </div>
+            <div class="plan-box" data-plan-box>
+              Agrega tareas pendientes y genera una agenda sugerida.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel matrix-panel" aria-labelledby="matrix-title">
+          <div class="section-title">
+            <p class="eyebrow">Priorizacion</p>
+            <h2 id="matrix-title">Matriz prioridad / esfuerzo</h2>
+          </div>
+
+          <div class="matrix-grid">
+            <article class="matrix-cell matrix-cell--urgent">
+              <h3>Urgente e importante</h3>
+              <ul data-matrix="urgent"></ul>
+            </article>
+            <article class="matrix-cell matrix-cell--important">
+              <h3>Importante, no urgente</h3>
+              <ul data-matrix="important"></ul>
+            </article>
+            <article class="matrix-cell matrix-cell--quick">
+              <h3>Rapidas de cerrar</h3>
+              <ul data-matrix="quick"></ul>
+            </article>
+            <article class="matrix-cell matrix-cell--later">
+              <h3>Puede esperar</h3>
+              <ul data-matrix="later"></ul>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="view-section" data-view="tareas">
+      <section class="workspace">
+        <aside class="panel task-panel" aria-labelledby="form-title">
+          <div class="section-title">
+            <p class="eyebrow">Entrada</p>
+            <h2 id="form-title">Nueva tarea</h2>
+          </div>
+
+          <form class="task-form" data-task-form>
+            <label>
+              Tarea
+              <input
+                type="text"
+                name="title"
+                placeholder="Ej: entregar avance del proyecto de IA"
+                autocomplete="off"
+                required
+              />
+            </label>
+
+            <label>
+              Nota rapida
+              <textarea
+                name="note"
+                rows="3"
+                placeholder="Contexto, entregable o criterio de avance"
+              ></textarea>
+            </label>
+
+            <div class="form-grid">
+              <label>
+                Categoria
+                <select name="category">
+                  <option value="Universidad">Universidad</option>
+                  <option value="Trabajo">Trabajo</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Proyecto">Proyecto</option>
+                </select>
+              </label>
+
+              <label>
+                Tiempo estimado
+                <select name="time">
+                  <option value="15">15 min</option>
+                  <option value="30">30 min</option>
+                  <option value="60">1 hora</option>
+                  <option value="120">2 horas</option>
+                  <option value="180">3 horas o mas</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Fecha limite
+              <input type="date" name="dueDate" />
+            </label>
+
+            <button class="primary-button" type="submit">Agregar tarea</button>
+          </form>
+        </aside>
+
+        <section class="panel list-panel" aria-labelledby="list-title">
+          <div class="list-header">
+            <div class="section-title">
+              <p class="eyebrow">Plan de accion</p>
+              <h2 id="list-title">Tareas</h2>
+            </div>
+
+            <div class="toolbar" role="group" aria-label="Filtros">
+              <button class="filter-button is-active" type="button" data-filter="all">Todas</button>
+              <button class="filter-button" type="button" data-filter="active">Pendientes</button>
+              <button class="filter-button" type="button" data-filter="progress">En progreso</button>
+              <button class="filter-button" type="button" data-filter="done">Completadas</button>
+            </div>
+          </div>
+
+          <div class="empty-state" data-empty-state>
+            Todavia no hay tareas. Agrega una para empezar a organizar tu dia.
+          </div>
+
+          <ul class="task-list" data-task-list></ul>
+        </section>
+      </section>
+      </section>
+
+      <section class="view-section" data-view="ia">
+        <section class="panel ai-panel" aria-labelledby="ai-title">
+        <div class="ai-header">
+          <div class="section-title">
+            <p class="eyebrow">Modo IA estructurado</p>
+            <h2 id="ai-title">Analisis inteligente local</h2>
+          </div>
+          <button class="secondary-button" type="button" data-ai-button>
+            Analizar tareas
+          </button>
+        </div>
+
+        <div class="ai-grid">
+          <article class="ai-card">
+            <h3>Diagnostico</h3>
+            <p data-ai-diagnosis>Agrega tareas y genera un analisis para ver el diagnostico.</p>
+          </article>
+          <article class="ai-card">
+            <h3>Subtareas sugeridas</h3>
+            <ul data-ai-subtasks>
+              <li>Sin subtareas sugeridas todavia.</li>
+            </ul>
+          </article>
+          <article class="ai-card">
+            <h3>Estrategia anti-procrastinacion</h3>
+            <p data-ai-strategy>Focora sugerira una forma concreta de empezar.</p>
+          </article>
+          <details class="ai-card ai-card--json">
+            <summary>Ver datos tecnicos</summary>
+            <pre data-ai-json>{}</pre>
+          </details>
+        </div>
+      </section>
+      </section>
+    </main>
+
+    <div class="reward-toast" data-reward-toast aria-live="polite"></div>
+
+    <footer class="footer">
+      <p>Focora - priorizacion asistida, recompensas y sincronizacion opcional.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
